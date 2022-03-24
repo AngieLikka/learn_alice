@@ -64,6 +64,10 @@ def handle_dialog(res, req):
                 {
                     'title': 'Нет',
                     'hide': True
+                },
+                {
+                    'title': 'Помощь',
+                    'hide': True
                 }
             ]
     else:
@@ -89,6 +93,24 @@ def handle_dialog(res, req):
             elif 'нет' in req['request']['nlu']['tokens']:
                 res['response']['text'] = 'Ну и ладно!'
                 res['end_session'] = True
+            elif 'помощь' in req['request']['nlu']['tokens']:
+                res['response']['text'] = 'Это игра "Угадай город по фото!". ' \
+                                          'Я буду показывать тебе фото города, а ты должен_а угадать его.' \
+                                          ' Если не угадаешь с первого раза, я покажу тебе фото другого города'
+                res['response']['buttons'] = [
+                    {
+                        'title': 'Да',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Нет',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Помощь',
+                        'hide': True
+                    }
+                ]
             else:
                 res['response']['text'] = 'Не поняла ответа! Так да или нет?'
                 res['response']['buttons'] = [
