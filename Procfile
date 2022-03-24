@@ -1,1 +1,1 @@
-web: python cities.py
+web: python guess_city.py
